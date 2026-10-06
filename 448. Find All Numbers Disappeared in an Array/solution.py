@@ -1,0 +1,15 @@
+class Solution:
+    def findDisappearedNumbers(self, nums: list[int]) -> list[int]:
+        # Mark the presence of numbers by negating the value at the corresponding index
+        for n in nums:
+            index = abs(n) - 1
+            if nums[index] > 0:
+                nums[index] = -nums[index]
+                
+        # Find all indices with positive numbers, which indicate missing values
+        result = []
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                result.append(i + 1)
+                
+        return result
